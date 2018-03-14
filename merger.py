@@ -58,11 +58,11 @@ for csv_item in target_csv_list:
     #NASDAQ - 
     ndx_df = pd.merge(dji_df,ndx_df, how='outer', on='Date').reset_index(drop=True).fillna(0).sort_values(by='Date')
         
-    #final merge to compabine all data
+    #final merge to combine all data
     all_df = ndx_df.reset_index(drop=True)
         
     end_path = "Merged/"
         
-    all_df.to_csv(end_path + csv_item[19:-4] + "_all.csv")
+    all_df.to_csv(end_path + csv_item[19:-4] + "_all.csv", float_format='%.2f')
         
         
