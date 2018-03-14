@@ -10,9 +10,11 @@ auth = tweepy.OAuthHandler(config.consumer_key, config.consumer_secret)
 auth.set_access_token(config.access_token, config.access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-# Import and Initialize Sentiment Analyzer
+# Import and Initialize Sentiment Analyzers
+from textblob import TextBlob
+
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-analyzer = SentimentIntensityAnalyzer()     
+analyzer = SentimentIntensityAnalyzer()   
 
 #reaching back N days
 N = 3
@@ -25,37 +27,44 @@ dt = parse(days)
 converted_time = dt.strftime('%Y-%m-%d')
 
 #input target search here as a list or single term
-target_list = ["@WSJ", "@FT", "@nyTimes", "@barronsonline", "@IBDinvestors", "@reuters", "@wired", "@business", "@USAToday", "@FoxBusiness"]
+target_list = ["@CNBC", "@YahooFinance"]
     
     
 for item in target_list:
     
     # Lists to hold sentiments, resets for each item in target_list
-    compound_list = []
+    compound_list_textblob = []
+    compound_list_vader = []
     tweet_times = []    
     text_list = [] 
 
-    for tweet in tweepy.Cursor(api.user_timeline,item).items():
+    for tweet in tweepy.Cursor(api.user_timeline,item).items(1000):
             
         #print(json.dumps(tweet, sort_keys=True, indent=4, separators=(',', ': ')))
         tweet_text = json.dumps(tweet._json, indent=3)
         tweet = json.loads(tweet_text)
-    
+        
         day = parse(str(tweet["created_at"])).strftime('%Y-%m-%d')
 
-        #Run Vader Analysis on each tweet
-        results = analyzer.polarity_scores(tweet["text"])
+        #Run textblob Analysis on each tweet
+        results_textblob = TextBlob(tweet["text"])
+        results_vader = analyzer.polarity_scores(tweet["text"])
         
-        compound = results["compound"]
+        
+        
+        compound_textblob = results_textblob.sentiment.polarity
+        compound_vader = results_vader["compound"]
         #text = tweet["text"] 
 
         # Add each value to the appropriate list
-        compound_list.append(compound)
+        compound_list_textblob.append(compound_textblob)
+        compound_list_vader.append(compound_vader)
         tweet_times.append(day)
         #text_list.append(text)
         
-        #create dictionary to convert into dataframem
-        sentiment = {"Compound Average": compound_list,
+        #create dictionary to convert into dataframe
+        sentiment = {"TextBlob Sentiment Average": compound_list_textblob,
+                     "Vader Sentiment Average": compound_list_vader,
                      "Day:": tweet_times}
                     #"Text:": text_list}            
         
