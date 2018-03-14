@@ -24,16 +24,17 @@ for csv_item in target_csv_list:
     spx_path = os.path.join('Financials/spx.csv')
     spx_df = pd.read_csv(spx_path)
     spx_df['Date'] = pd.to_datetime(spx_df['Date'])
-
+    spx_df['SPX Price'] = spx_df['SPX Price'].map('{:.2f}'.format)
 
     dji_path = os.path.join('Financials/dji.csv')
     dji_df = pd.read_csv(dji_path)
     dji_df['Date'] = pd.to_datetime(dji_df['Date'])
-
+    dji_df['DJI Price'] = dji_df['DJI Price'].map('{:.2f}'.format)
 
     ndx_path = os.path.join('Financials/ndx.csv')
     ndx_df = pd.read_csv(ndx_path)
     ndx_df['Date'] = pd.to_datetime(ndx_df['Date'])
+    ndx_df['NDX Price'] = ndx_df['NDX Price'].map('{:.2f}'.format)
 
     all_df = ""
         
@@ -63,6 +64,6 @@ for csv_item in target_csv_list:
         
     end_path = "Merged/"
         
-    all_df.to_csv(end_path + csv_item[19:-4] + "_all.csv", float_format='%.2f')
+    all_df.to_csv(end_path + csv_item[19:-4] + "_all.csv")
         
         

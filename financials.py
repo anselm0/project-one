@@ -1,7 +1,6 @@
 import pandas as pd
 import requests as req
 
-
 api_key = '4GFAEI5O82MQWDKF'
 
 url = "https://www.alphavantage.co/query?function=TIME_SERIES_Daily&symbol=MSFT&apikey="
@@ -116,14 +115,14 @@ spx = spx.rename(columns = {'new_date': 'Date',
                             '5. volume': 'SPX Volume',
                             '4. close': 'SPX Price'}).set_index('Date')
 
-spx.to_csv(path + "spx.csv")
+spx.to_csv(path + "spx.csv", float_format = '%.2g')
 
 dji = dji.rename(columns = {'new_date': 'Date',
                             '5. volume': 'DJI Volume',
                             '4. close': 'DJI Price'}).set_index('Date')
-dji.to_csv(path + "dji.csv")
+dji.to_csv(path + "dji.csv", float_format = '%.2g')
 
 ndx = ndx.rename(columns = {'new_date': 'Date',
                             '5. volume': 'NDX Volume',
                             '4. close': 'NDX Price'}).set_index('Date')
-ndx.to_csv(path + "ndx.csv")
+ndx.to_csv(path + "ndx.csv", float_format = '%.2g')

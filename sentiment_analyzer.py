@@ -75,4 +75,4 @@ for item in target_list:
     
     #export to csv file for each item in target_list   
     path = "Sentiment_Analyzer/"
-    sent_df.to_csv(path + item + ".csv", encoding= 'utf-8')
+    sent_df.to_csv(path + item + ".csv", encoding= 'utf-8', float_format='%.3f')
