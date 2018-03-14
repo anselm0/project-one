@@ -40,7 +40,11 @@ for csv_item in target_csv_list:
         
     #create df for each file
     df = pd.read_csv(csv_item)
-    df['Date'] = pd.to_datetime(df['Date'])    
+    df['Date'] = pd.to_datetime(df['Date'])
+    df['TextBlob'] = df['TextBlob'].map('{:.3f}'.format)
+    df['Vader'] = df['Vader'].map('{:.3f}'.format)
+
+    
     
     #since the df is sorted by days, we can call the last 30 rows for the last 30 days and reassign df
     df = df.tail(30)
