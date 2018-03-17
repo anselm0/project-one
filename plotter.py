@@ -41,7 +41,7 @@ for csv_item in target_csv_list:
     ax.set_ylim(2600, 2800)
     ax.set_xlim([datetime.date(2018,2,10), datetime.date(2018,3,18)])
     
-    sc = ax.scatter(x, y, s=volume, c=textblob, cmap='RdYlGn', alpha=0.5, edgecolor = 'black')
+    sc = ax.scatter(x, y, s=volume, c=vader, cmap='RdYlGn', alpha=0.5, edgecolor = 'black')
     ax.plot(x,y)
     
     ax.grid(True, alpha=.5)
@@ -51,9 +51,9 @@ for csv_item in target_csv_list:
     ax.set_title(str(title), fontdict=font)
     ax.set_ylabel('Price')
     plt.xticks(rotation=45)
-    fig.colorbar(sc, spacing='proportional').set_label('Sentiment Polarity',rotation = 270,labelpad=10)
+    fig.colorbar(sc, spacing='proportional').set_label('Vader Sentiment Polarity',rotation = 270,labelpad=10)
     fig.set_size_inches(9, 6)
-    fig.savefig(plot_path + csv_item[7:-8] + '_SPX_plot_textblob.png',bbox_inches="tight", dpi=72)  
+    fig.savefig(plot_path + csv_item[7:-8] + '_SPX_plot_Vader.png',bbox_inches="tight", dpi=72)  
     
     #DJI
     y = df['DJI Price'].values
@@ -66,7 +66,7 @@ for csv_item in target_csv_list:
     ax.set_xlim([datetime.date(2018,2,10), datetime.date(2018,3,18)])
 
     
-    sc = ax.scatter(x, y, s=volume_dji, c=textblob, cmap='RdYlGn', alpha=0.5, edgecolor = 'black')
+    sc = ax.scatter(x, y, s=volume_dji, c=vader, cmap='RdYlGn', alpha=0.5, edgecolor = 'black')
     ax.plot(x,y)
     
     ax.grid(True, alpha=.5)
@@ -76,9 +76,9 @@ for csv_item in target_csv_list:
     ax.set_title(str(title), fontdict=font)
     ax.set_ylabel('Price')
     plt.xticks(rotation=45)
-    fig.colorbar(sc, spacing='proportional').set_label('Sentiment Polarity',rotation = 270,labelpad=10)
+    fig.colorbar(sc, spacing='proportional').set_label('Vader Sentiment Polarity',rotation = 270,labelpad=10)
     fig.set_size_inches(9, 6)
-    fig.savefig(plot_path + csv_item[7:-8] + '_DJI_plot_textblob.png',bbox_inches="tight", dpi=72)  
+    fig.savefig(plot_path + csv_item[7:-8] + '_DJI_plot_Vader.png',bbox_inches="tight", dpi=72)  
 
     
     #NDX
@@ -91,7 +91,7 @@ for csv_item in target_csv_list:
     ax.set_ylim(6400, 7200)
     ax.set_xlim([datetime.date(2018,2,10), datetime.date(2018,3,18)])
     
-    sc = ax.scatter(x, y, s=volume_ndx, c=textblob, cmap='RdYlGn', alpha=0.5, edgecolor = 'black')
+    sc = ax.scatter(x, y, s=volume_ndx, c=vader, cmap='RdYlGn', alpha=0.5, edgecolor = 'black')
     ax.plot(x,y)
 
     
@@ -103,9 +103,9 @@ for csv_item in target_csv_list:
     ax.set_title(str(title), fontdict=font)
     ax.set_ylabel('Price')
     plt.xticks(rotation=45)
-    fig.colorbar(sc, spacing='proportional').set_label('Sentiment Polarity',rotation = 270,labelpad=10)
+    fig.colorbar(sc, spacing='proportional').set_label('Vader Sentiment Polarity',rotation = 270,labelpad=10)
     fig.set_size_inches(9, 6)
-    fig.savefig(plot_path + csv_item[7:-8] + '_NDX_plot_textblob.png',bbox_inches="tight", dpi=72)  
+    fig.savefig(plot_path + csv_item[7:-8] + '_NDX_plot_Vader.png',bbox_inches="tight", dpi=72)  
 
     #add legends and fix x labels
     #make graph larger
