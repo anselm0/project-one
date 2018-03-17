@@ -71,6 +71,7 @@ ndx = ndx.filter(['new_date','5. volume','4. close'])
 spx = spx.filter(['new_date','5. volume','4. close'])
 dji = dji.filter(['new_date','5. volume','4. close'])
 
+
 Vix_trans = Vix_df.transpose()
 
 #Vix_trans.head()

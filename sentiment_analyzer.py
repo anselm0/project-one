@@ -16,7 +16,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 analyzer = SentimentIntensityAnalyzer()   
 
 #reaching back N days
-N = 3
+N = 30
 
 days_ago = datetime.now() - timedelta(days=N)
 

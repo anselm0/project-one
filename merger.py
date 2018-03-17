@@ -51,17 +51,17 @@ for csv_item in target_csv_list:
     
     #Merges
     #SP500
-    spx_df = pd.merge(df,spx_df, how='outer', on='Date').reset_index(drop=True).fillna(0).sort_values(by='Date')        
+    spx_df = pd.merge(df,spx_df, how='outer', on='Date').reset_index(drop=True).fillna(method = 'ffill').sort_values(by='Date')        
     spx_df = spx_df.reset_index(drop=True)
     #spx_df.to_csv(csv_item[:-4] + "_spx.csv")
         
     #Dow Jones
-    dji_df = pd.merge(spx_df,dji_df, how='outer', on='Date').reset_index(drop=True).fillna(0).sort_values(by='Date')
+    dji_df = pd.merge(spx_df,dji_df, how='outer', on='Date').reset_index(drop=True).fillna(method = 'ffill').sort_values(by='Date')
     dji_df = dji_df.reset_index(drop=True)
     #dji_df.to_csv(csv_item[:-4] + "_dji.csv")
         
     #NASDAQ - 
-    ndx_df = pd.merge(dji_df,ndx_df, how='outer', on='Date').reset_index(drop=True).fillna(0).sort_values(by='Date')
+    ndx_df = pd.merge(dji_df,ndx_df, how='outer', on='Date').reset_index(drop=True).fillna(method = 'ffill').sort_values(by='Date')
         
     #final merge to combine all data
     all_df = ndx_df.reset_index(drop=True)
