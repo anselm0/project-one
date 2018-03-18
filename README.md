@@ -1,3 +1,9 @@
+# Directions:
+* Pass a list in the Sentiment_Analyzer.py file, be sure to indicate the timeframe by changing the N value
+* Run financials.py file to gather the lastest data from the DJI, SPX, and NDX
+* Pass the resulting CSV files from Sentiment_Analyzer.py as a list into the merger.py file, which will join the finanicial data and sentiment analysis data and produce new csv files.
+* Pass the merger.py files into the plotter.py to plot.  You need to change the c value in the ax.scatter parameters to either vader or textblob depending on what sentiment to plot.
+
 # Team # 5 Project 1 -  Proposal 
 
 ## Stock Price Movement vs. Social Media Sentiment (Twitter)
