@@ -6,9 +6,6 @@
 
 ## Stock Price Movement vs. Social Media Sentiment (Twitter)
 
-## Contributors: 
-Anselmo, Kathleen, Kenneth, Solomon, Oscar
-
 ## Project Description/Outline:
 *Use financial data of 10 stocks from 10 different sectors to track the relationship between Social Media volume/sentiment and stock price movement five days prior to Social Media news volume
 
